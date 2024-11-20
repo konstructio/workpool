@@ -35,6 +35,8 @@ type Pool struct {
 // Initialize creates a new worker pool with the specified number of workers,
 // job queue capacity, and context. The error returned relates to input
 // validation.
+//
+//nolint:contextcheck // The context is used to cancel the entire pool.
 func Initialize(ctx context.Context, numWorkers int, queueCapacity int) (*Pool, error) {
 	// Validate inputs
 	if numWorkers <= 0 {
